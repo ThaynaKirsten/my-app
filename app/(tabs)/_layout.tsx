@@ -1,13 +1,10 @@
-
-import { Image } from 'react-native';
 import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,24 +12,81 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#717171',
+         tabBarInactiveTintColor: '#dcdbdb',
         headerShown: false,
         tabBarButton: HapticTab,
-      }}>
+
+        tabBarStyle: {
+          backgroundColor: '#b20000',
+          borderTopWidth: 0,
+          height: 60,
+        },
+      }}
+    >
+
+      {/* Tela Home */}
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Escola',
+
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons
+              name="school"
+              size={28}
+              color={color}
+            />
+          ),
         }}
       />
+
+      {/* Tela Explore */}
       <Tabs.Screen
-        name="explore"
+        name="1MIN"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: '1MIN',
+
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons
+              name="menu-book"
+              size={28}
+              color={color}
+            />
+          ),
         }}
       />
+
+      <Tabs.Screen
+        name="2MIN"
+        options={{
+          title: '2MIN',
+
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons
+              name="menu-book"
+              size={28}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="3MIN"
+        options={{
+          title: '3MIN',
+
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons
+              name="menu-book"
+              size={28}
+              color={color}
+            />
+          ),
+        }}
+      />
+
     </Tabs>
   );
 }
